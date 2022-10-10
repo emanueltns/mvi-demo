@@ -3,41 +3,43 @@ package com.devforfun.mvidemo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.devforfun.mvidemo.ui.theme.MVIDemoTheme
+import androidx.navigation.NavController
+import com.devforfun.mvidemo.main.view.MainScreenView
+import com.devforfun.mvidemo.navigation.AppNavigator
+import com.devforfun.mvidemo.navigation.Destination
+import com.google.accompanist.navigation.animation.AnimatedNavHost
+import com.google.accompanist.navigation.animation.composable
+import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    private var navController: NavController? = null
+
+    @OptIn(ExperimentalAnimationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MVIDemoTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Android")
-                }
-            }
+            R.string.app_name
+            MVIDemoApp(appNavigator = AppNavigator(rememberAnimatedNavController()))
         }
     }
-}
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    MVIDemoTheme {
-        Greeting("Android")
+    @OptIn(ExperimentalAnimationApi::class)
+    @Composable
+    fun MVIDemoApp(appNavigator: AppNavigator) {
+        navController = appNavigator.navController
+        val startDestination = Destination.MainScreen.route
+        AnimatedNavHost(
+            appNavigator.navController,
+            startDestination = startDestination
+        ) {
+            composable(route = Destination.MainScreen.route) {
+                MainScreenView(appNavigator = appNavigator)
+            }
+        }
     }
 }

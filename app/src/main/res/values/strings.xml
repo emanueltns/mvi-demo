@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MVIDemo</string>
+    <string name="main_screen_title">Home</string>
+    <string name="emoji_hint">"This is an example of an emoji card hint. "</string>
 </resources>
