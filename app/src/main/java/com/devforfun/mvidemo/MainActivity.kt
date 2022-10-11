@@ -9,6 +9,7 @@ import androidx.navigation.NavController
 import com.devforfun.mvidemo.main.view.MainScreenView
 import com.devforfun.mvidemo.navigation.AppNavigator
 import com.devforfun.mvidemo.navigation.Destination
+import com.devforfun.mvidemo.personaldata.view.PersonalDataScreenView
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
@@ -39,6 +40,10 @@ class MainActivity : ComponentActivity() {
         ) {
             composable(route = Destination.MainScreen.route) {
                 MainScreenView(appNavigator = appNavigator)
+            }
+
+            composable(route = Destination.PersonalData.route) {
+                PersonalDataScreenView(personalNavigation = appNavigator)
             }
         }
     }

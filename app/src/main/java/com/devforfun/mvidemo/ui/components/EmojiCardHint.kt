@@ -19,7 +19,7 @@ import com.devforfun.mvidemo.ui.theme.MVIDemoTheme
 @Composable
 fun EmojiCardHint(
     modifier: Modifier = Modifier,
-    emoji: String = "\uD83D\uDC68\uD83C\uDFFB\u200D\uD83D\uDCBC",
+    emoji: String = "\uD83D\uDE4B\uD83C\uDFFB\u200D♂️",
     title: String,
 ) {
     Row(modifier = modifier.fillMaxSize()) {

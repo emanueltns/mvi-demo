@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">MVIDemo</string>
     <string name="main_screen_title">Home</string>
-    <string name="emoji_hint">"This is an example of an emoji card hint. "</string>
+    <string name="emoji_hint">"First step is to select a car you want to buy. "</string>
+    <string name="empty_list_message">Empty list</string>
+    <string name="no_cars_message">You have no cars. Please add a car to your list</string>
+    <string name="header_title_buy_car">The car you want to buy</string>
+    <string name="select">Select</string>
+    <string name="available_cars">Available cars</string>
+    <string name="emoji_hint_cool">Cool! Now you can go to the next step</string>
+    <string name="first_name">First Name</string>
+    <string name="your_first_name">Your first name</string>
 </resources>

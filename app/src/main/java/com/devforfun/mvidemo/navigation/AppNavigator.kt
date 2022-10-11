@@ -4,14 +4,19 @@ import androidx.annotation.VisibleForTesting
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import com.devforfun.mvidemo.main.viewmodel.MainNavigation
+import com.devforfun.mvidemo.personaldata.viewmodel.PersonalNavigation
 
 open class AppNavigator constructor(
     val navController: NavHostController,
     private val transitionsManager: TransitionsManager? = null
-    ) : MainNavigation {
+    ) : MainNavigation, PersonalNavigation {
 
-    override fun moveToFormsScreen() {
+    override fun moveBack() {
+        navigateBack()
+    }
 
+    override fun navigateToPersonalDataScreen() {
+       navigateTo(Destination.PersonalData)
     }
 
     private fun navigateTo(destination: Destination, singleTop: Boolean = false, vararg args: Pair<String, String?>) {
